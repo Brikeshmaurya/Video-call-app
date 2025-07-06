@@ -1,0 +1,193 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  background: url('/bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.9);
+  background-blend-mode: lighten;
+  height: 100%;
+}
+
+/* Navbar */
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #f5f5f5e0;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+.navBar h2 {
+  font-size: 1.8rem;
+  color: #333;
+}
+.navBar > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Meet Container */
+.meetContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 6rem;
+  min-height: calc(100vh - 80px);
+  width: 100%;
+}
+
+/* Left Panel */
+.leftPanel {
+  flex: 1;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.leftPanel h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #222;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.formActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+.leftPanel .MuiTextField-root,
+.leftPanel .MuiButton-root {
+  width: 100%;
+  max-width: 300px;
+}
+.MuiTextField-root input {
+  background-color: white;
+}
+.MuiButton-root {
+  text-transform: capitalize;
+  font-weight: 600;
+  background-color: #1976d2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Right Panel */
+.rightPanel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.rightPanel img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+.rightPanel img:hover {
+  transform: scale(1.05);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .meetContainer {
+    flex-direction: column-reverse;
+    padding: 2rem;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .leftPanel {
+    padding: 0;
+  }
+
+  .leftPanel h2 {
+    font-size: 1.6rem;
+  }
+
+  .rightPanel {
+    padding: 0;
+  }
+
+  .rightPanel img {
+    width: 80%;
+    max-width: 240px;
+  }
+
+  .leftPanel .MuiTextField-root,
+  .leftPanel .MuiButton-root {
+    max-width: 250px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .navBar {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+
+  .navBar h2 {
+    font-size: 1.4rem;
+  }
+
+  .navBar > div {
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .navBar button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+
+  .meetContainer {
+    flex-direction: column-reverse;
+    padding: 1rem;
+    gap: 1.5rem;
+    min-height: calc(100vh - 140px);
+  }
+
+  .leftPanel h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .rightPanel img {
+    width: 70%;
+    max-width: 180px;
+  }
+
+  .formActions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .leftPanel .MuiTextField-root,
+  .leftPanel .MuiButton-root {
+    max-width: 100%;
+  }
+}
