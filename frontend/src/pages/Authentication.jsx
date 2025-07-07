@@ -67,7 +67,19 @@ export default function Authentication() {
   return (
     <ThemeProvider theme={defaultTheme}>
    <div className="full-auth-container">
+  
   <div className="auth-card-container">
+
+    <Link
+  href="/"
+  underline="none"
+  className="auth-back-button"
+>
+  <Button variant="text" size="small">
+    ⬅ Back to Home
+  </Button>
+</Link>
+    
     <Avatar className="auth-avatar">
       <LockOutlinedIcon />
     </Avatar>
