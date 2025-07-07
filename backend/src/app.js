@@ -27,12 +27,17 @@ app.use("/api/v1/users" , userRoutes);
 
 const start = async () =>{
     try{
-    const connectionDB = await mongoose.connect(process.env.MONGO_URl);
+    const connectionDB = await mongoose.connect(process.env.MONGO_URL);
     console.log(`✅ Mongo Connected to DB Host: ${connectionDB.connection.host}`);
     }
     catch(error){
         console.log("error = ",error.message);
     }
+
+    app.get("/", (req, res) => {
+  res.send("🚀 Backend is up and running!");
+});
+
     server.listen(app.get("port"),() => {
         console.log("🚀LISTENING ON PORT 8000...")
     })
