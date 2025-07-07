@@ -9,7 +9,7 @@ html, body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: 'Roboto', sans-serif;
-  background: url('/bg.jpg') no-repeat center center fixed;
+  background: url('/frontend/public/background.png') no-repeat center center fixed;
   background-size: cover;
   background-color: rgba(255, 255, 255, 0.9);
   background-blend-mode: lighten;
