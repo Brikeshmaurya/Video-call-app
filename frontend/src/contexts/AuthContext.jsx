@@ -7,12 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext({});
 
+
 // Axios instance
+console.log("API BASE URL:", import.meta.env.VITE_API_BASE_URL);
+
 const client = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
 });
-  
-
 
 export const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
