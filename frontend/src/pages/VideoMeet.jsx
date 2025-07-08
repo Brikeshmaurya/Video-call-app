@@ -5,16 +5,18 @@ import { Badge, IconButton, TextField } from '@mui/material';
 import { Button } from '@mui/material';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import VideocamOffIcon from '@mui/icons-material/VideocamOff'
-import  styles from "../styles/VideoMeet.module.css";
+import styles from "../styles/VideoMeet.module.css";
 import CallEndIcon from '@mui/icons-material/CallEnd'
 import MicIcon from '@mui/icons-material/Mic'
 import MicOffIcon from '@mui/icons-material/MicOff'
 import ScreenShareIcon from '@mui/icons-material/ScreenShare';
 import StopScreenShareIcon from '@mui/icons-material/StopScreenShare'
 import ChatIcon from '@mui/icons-material/Chat'
- 
+import { useNavigate } from "react-router-dom";
 
-const server_url = import.meta.env.VITE_API_BASE_URL;
+
+const server_url = import.meta.env.VITE_SOCKET_URL;
+
 
 var connections = {};
 
@@ -26,7 +28,14 @@ const peerConfigConnections = {
 
 export default function VideoMeet() {
 
+    const navigate = useNavigate();
+
     var socketRef = useRef();
+         socketRef.current = io.connect(server_url, {
+        transports: ["websocket"]
+    });
+
+    
     let socketIdRef = useRef();
 
     let localVideoref = useRef();
@@ -204,7 +213,7 @@ export default function VideoMeet() {
             try {
                 let tracks = localVideoref.current.srcObject.getTracks()
                 tracks.forEach(track => track.stop())
-            } catch (e) { 
+            } catch (e) {
                 console.log(e);
             }
         }
@@ -411,7 +420,7 @@ export default function VideoMeet() {
             let tracks = localVideoref.current.srcObject.getTracks()
             tracks.forEach(track => track.stop())
         } catch (e) { }
-        window.location.href = "/home"
+        navigate("/home");
     }
 
     let openChat = () => {
@@ -445,7 +454,7 @@ export default function VideoMeet() {
         // this.setState({ message: "", sender: username })
     }
 
-    
+
     let connect = () => {
         setAskForUsername(false);
         getMedia();
@@ -510,7 +519,7 @@ export default function VideoMeet() {
                             {(video === true) ? <VideocamIcon /> : <VideocamOffIcon />}
                         </IconButton>
                         <IconButton onClick={handleEndCall} style={{ color: "red" }}>
-                            <CallEndIcon  />
+                            <CallEndIcon />
                         </IconButton>
                         <IconButton onClick={handleAudio} style={{ color: "white" }}>
                             {audio === true ? <MicIcon /> : <MicOffIcon />}

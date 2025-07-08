@@ -19,16 +19,22 @@ const allowedOrigins = [
   'https://videocallstream.onrender.com'
 ];
 
-app.use(cors({
-  origin: (origin, callback) => {
+const corsOptions = {
+  origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
+      console.log("❌ Blocked CORS request from:", origin);
       callback(new Error("Not allowed by CORS"));
     }
   },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
-}));
+};
+
+// ✅ CORRECT ORDER
+app.use(cors(corsOptions));
+
 
 
 
