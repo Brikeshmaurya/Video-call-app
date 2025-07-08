@@ -30,13 +30,9 @@ export default function VideoMeet() {
 
     const navigate = useNavigate();
 
-    var socketRef = useRef();
-         socketRef.current = io.connect(server_url, {
-        transports: ["websocket"]
-    });
-
-    
     let socketIdRef = useRef();
+
+    let socketRef = useRef();
 
     let localVideoref = useRef();
 
@@ -140,7 +136,6 @@ export default function VideoMeet() {
             console.log("SET STATE HAS ", video, audio);
 
         }
-
 
     }, [video, audio])
     let getMedia = () => {
@@ -414,6 +409,15 @@ export default function VideoMeet() {
     let handleScreen = () => {
         setScreen(!screen);
     }
+
+    useEffect(() => {
+  return () => {
+    if (socketRef.current) {
+      socketRef.current.disconnect();
+    }
+  };
+}, []);
+
 
     let handleEndCall = () => {
         try {
