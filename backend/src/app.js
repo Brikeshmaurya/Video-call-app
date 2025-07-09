@@ -34,6 +34,7 @@
 
   // ✅ CORRECT ORDER
   app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 
 
